@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{Base::Layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert Title Here</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Optional for custom styling -->
+</head>
+<body>
+    <section>
+    
+<!-- Start Slider -->
+<!-- Bootstrap Carousel -->
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="Images/CarouselImg/Tablet.jpg" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="Images/CarouselImg/AC.jpg" class="d-block w-100" alt="Slide 2">
+            </div>
+            <!-- <div class="carousel-item">
+                <img src="Images/CarouselImg/Iron.jpg" class="d-block w-100" alt="Slide 3">
+            </div> -->
+            <div class="carousel-item">
+                <img src="Images/CarouselImg/Camera.jpg" class="d-block w-100" alt="Slide 4">
+            </div>
+            <div class="carousel-item">
+                <img src="Images/CarouselImg/Vivo.jpg" class="d-block w-100" alt="Slide 5">
+            </div>
+             <div class="carousel-item">
+                <img src="Images/CarouselImg/AppleWatch.jpg" class="d-block w-100" alt="Slide 6">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+<!-- End Slider -->
+   
+    <!--  Start Category Module -->
+    <div class="container">
+    <div class="row">
+        <h2 class="text-center fs-4"><b>Category</b></h2>        
+        <div class="col-md-2" th:each="c:${category}"> 
+            <div class="card category-card">
+                <div class="card-body text-center">
+                    <img th:src="@{'/Images/CategoryImg/'+${c.imageName}}" ><br>
+                    <a th:href="@{'/products?category='+${c.name}}" class="text-decoration-none text-white">
+                        [[${c.name}]]
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- End Category Module -->
+    
+    <!-- Start Bank Offers Section -->
+<div class="container my-4">
+    <h2 class="text-center mb-4"><b>Existing Bank Offers for You</b></h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <a href="https://www.hdfcbank.com" target="_blank" class="card-link"> <!-- Link to HDFC Bank -->
+                <div class="card bank-offer-card">
+                    <div class="card-body text-center">
+                        <img src="/Images/BankOffer/HDFC.png" class="bank-logo">
+                        <p class="bank-offer-text">Enjoy up to 10% extra savings with HDFC Bank Credit Card</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="https://www.icicibank.com" target="_blank" class="card-link"> <!-- Link to ICICI Bank -->
+                <div class="card bank-offer-card">
+                    <div class="card-body text-center">
+                        <img src="/Images/BankOffer/ICICI.png" class="bank-logo">
+                        <p class="bank-offer-text">Get up to Rs.500 cashback on ICICI Bank transactions.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="https://www.sbi.co.in" target="_blank" class="card-link"> <!-- Link to SBI -->
+                <div class="card bank-offer-card">
+                    <div class="card-body text-center">
+                        <img src="/Images/BankOffer/SBI.png" class="bank-logo">
+                        <p class="bank-offer-text">Flat Rs.750 off with SBI Credit Cards on orders above Rs.10,000.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="https://www.axisbank.com" target="_blank" class="card-link"> <!-- Link to Axis Bank -->
+                <div class="card bank-offer-card">
+                    <div class="card-body text-center">
+                        <img src="/Images/BankOffer/Axis.png" class="bank-logo">
+                        <p class="bank-offer-text">Enjoy no-cost EMI with Axis Bank Credit Cards.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- End Bank Offers Section-->
+
+<!-- Start Our New Favourites Section -->
+<div class="container my-4">
+    <h2 class="text-center mb-4"><b>Our New Favourites</b></h2>
+    
+    <!-- First Image -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <img src="/Images/New Favourites/Samsung.jpg" class="card-img-top" alt="New Product 1">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Second Image (below the first) -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <img src="/Images/New Favourites/Vivo.jpg" class="card-img-top" alt="New Product 2">
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- End Our New Favourites Section -->
+
+<!-- Start Best Selling Items Section -->
+<div class="container my-4">
+    <h2 class="text-center mb-4"><b>Best Selling Items</b></h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        <!-- First Best Selling Item -->
+        <div class="col">
+            <div class="card best-selling-card">
+                <img src="/Images/New Favourites/Bluetooth.jpg" class="card-img-top" alt="Best Selling Item 1">
+            </div>
+        </div>
+        <!-- Second Best Selling Item -->
+        <div class="col">
+            <div class="card best-selling-card">
+                <img src="/Images/New Favourites/Refrigerator.jpg" class="card-img-top" alt="Best Selling Item 2">
+            </div>
+        </div>
+        <!-- Third Best Selling Item -->
+        <div class="col">
+            <div class="card best-selling-card">
+                <img src="/Images/New Favourites/OnePlus.jpg" class="card-img-top" alt="Best Selling Item 3">
+            </div>
+        </div>
+        <!-- Fourth Best Selling Item -->
+        <div class="col">
+            <div class="card best-selling-card">
+                <img src="/Images/New Favourites/TV.jpg" class="card-img-top" alt="Best Selling Item 4">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Best Selling Items Section -->
+
+<!--Start Latest Product Section -->
+
+<div class="container my-4">
+    <h2 class="text-center mb-4"><b>Latest Products</b></h2>  
+    <div class="row justify-content-center"> 
+        <div class="col-md-3" th:each="p:${products}">
+            <div class="card latest-product-card">
+                <div class="card-body text-center">
+                    <img th:src="@{'/Images/ProductImg/'+${p.image}}" class=""><br>
+                    <p class="text-center">
+                        <a th:href="@{'/product/'+${p.id}}" class="text-decoration-none text-white">[[${p.title}]]</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--End Latest Product Section -->
+
+<!-- Start Why EStore? Section -->
+<div class="container my-4">
+    <h2 class="text-center mb-4"><b>Why EStore?</b></h2>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <!-- Brand Cards -->
+        <div class="brand-card">HP</div>
+        <div class="brand-card">DELL</div>
+        <div class="brand-card">OPPO</div>
+        <div class="brand-card">VIVO</div>
+        <div class="brand-card">SAMSUNG</div>
+        <div class="brand-card">ONEPLUS</div>
+        <div class="brand-card">GODREJ</div>
+        <div class="brand-card">LG</div>
+    </div>
+</div>
+<!-- End Why EStore? Section -->
+
+
+<!-- About Us Section -->
+<div class="container my-4">
+    <h2 class="text-center mb-4"><b>About Us</b></h2>
+    <p class="text-center text-white">
+        Welcome to <b>EStore</b>, your one-stop destination for the latest electronics and top-rated gadgets.
+        We bring you high-quality products from trusted brands at unbeatable prices. Shop with confidence and 
+        enjoy exclusive deals, fast shipping, and excellent customer support!
+    </p>
+</div>
+
+<!-- Connect With Us Section -->
+<div class="container my-4 text-center">
+    <h2 class="mb-4 text-white"><b>Connect With Us</b></h2>
+    <div class="email-input-container d-flex justify-content-center align-items-center">
+        <input type="email" id="emailInput" class="form-control" placeholder="Enter Your Email" required>
+        <button id="submitEmail" class="btn btn-light ms-2">&#10132;</button>
+    </div>
+    <p id="thankYouMessage" class="text-white mt-2" style="display: none;">Thank You!</p>
+</div>
+
+<!-- Social Media Icons & Copyright -->
+<div class="container text-center my-4">
+    <div class="social-icons">
+        <a href="#" class="me-3"><img src="/Images/Icons/YouTube.png" alt="YouTube" width="30"></a>
+        <a href="#" class="me-3"><img src="/Images/Icons/Insta.png" alt="Instagram" width="30"></a>
+        <a href="#" class="me-3"><img src="/Images/Icons/Facebook.png" alt="Facebook" width="30"></a> 
+    </div>
+    <p class="text-white mt-3">&copy; 2025 EStore. All rights reserved.</p> <!-- Replaced © with &copy; -->
+</div>
+
+<!-- JavaScript for Email Input -->
+<script>
+    document.getElementById("submitEmail").addEventListener("click", function() {
+        var emailInput = document.getElementById("emailInput");
+        if (emailInput.value.trim() !== "") {
+            document.getElementById("thankYouMessage").style.display = "block";
+            emailInput.value = ""; // Clear the input field
+        }
+    });
+</script>
+
+    <!-- Bootstrap JS (Popper included) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="Script.js"></script> 
+    
+    <!-- Custom JavaScript -->
+
+<!-- Add Custom CSS -->
+   <style>   
+.carousel-item img {
+    height: 600px; /* Adjust as needed */
+    object-fit: cover;
+} 
+
+/* Category and Latest Products Title Styling */
+.module-title {
+    font-family: 'Poppins', sans-serif; /* Ensure same font as other titles */
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff; /* White text for contrast */
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #2E1A47, #3B2875);
+    padding: 10px;
+    border-radius: 10px;
+}
+  
+/* Category Section Styling */
+.category-card {
+    background: linear-gradient(135deg, #2E1A47, #3B2875);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 180px; /* Increased width */
+    height: 220px; /* Increased height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centered content properly */
+    border: 2px solid #ffffff; /* White border for contrast */
+}
+
+.category-card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+}
+
+.category-card img {
+    width: 100px; /* Adjusted size for better balance */
+    height: 100px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.category-card a {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.category-card a:hover {
+    color: #00bcd4; /* Gold color effect on hover */
+}
+
+.bank-offer-card {
+    background: white; /* Changed background to white */
+    border-radius: 30px;
+    padding: 2px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #ffffff;  /* Added a subtle border for a clean look */
+}
+
+.bank-offer-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.bank-logo {
+    width: 150px; /* Increased logo size */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.bank-offer-text {
+    color: white; /* Changed text color to black */
+    font-size: 18px; /* Slightly increased font size */
+    font-weight: bold;
+}
+.card-link {
+    text-decoration: none !important;
+    color: inherit !important; /* Keeps the default text color */
+}
+
+
+/* Our New Favourites Section Styling */
+.card {
+    border-radius: 15px; /* Rounded corners for cards */
+    overflow: hidden; /* Ensures the image fits inside the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #ffffff; 
+}
+.card-img-top {
+    width: 100%; /* Ensure image takes up the full width */
+    height: auto; /* Maintain image aspect ratio */
+}
+
+.container.my-4 {
+    margin-top: 40px; /* Add margin above the section */
+    margin-bottom: 40px; /* Add margin below the section */
+}
+
+h2.text-center.mb-4 {
+    font-size: 24px; /* Adjust the font size for the title */
+    font-weight: bold; /* Make the title bold */
+    color: white; /* Dark color for the title */
+}
+
+/* Best Selling Items Section Styling */
+.best-selling-card {
+    border-radius: 15px; /* Rounded corners for cards */
+    overflow: hidden; /* Ensures the image fits inside the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #ffffff; 
+}
+
+.best-selling-card .card-img-top {
+    width: 100%; /* Ensure image takes up the full width */
+    height: 400px; /* Fixed height for images */
+    object-fit: cover; /* Make sure the image covers the area of the card */
+    border-radius: 15px;
+}
+
+/* Latest Product Section Styling */
+.latest-product-card {
+    width: 300px;  /* Fixed width */
+    height: 300px; /* Fixed height */
+    background: linear-gradient(135deg, #1A3B47, #287575);
+    border-radius: 20px;
+    padding: 15px;
+    margin: 10px auto;  /* Centered the cards */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures even spacing */
+    align-items: center;
+}
+
+.latest-product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.latest-product-card img {
+    width: 100%;
+    height: 180px; /* Fixed image height */
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.latest-product-card p {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px; 
+    text-align: center;
+}
+
+.latest-product-card a {
+    color: white !important; 
+    text-decoration: none; 
+}
+
+.brand-card {
+    width: 120px; /* Square shape */
+    height: 120px;
+    background: #252525; /* Dark background */
+    border-radius: 10px; /* Smooth rounded corners */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.email-input-container {
+        max-width: 400px;
+        margin: auto;
+    }
+    .form-control {
+        height: 45px;
+        border-radius: 30px;
+        padding-left: 15px;
+    }
+    .btn {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    .social-icons img {
+        transition: transform 0.3s ease;
+    }
+    .social-icons img:hover {
+        transform: scale(1.1);
+    }
+
+
+</style>
+</section>
+</body>
+</html> 

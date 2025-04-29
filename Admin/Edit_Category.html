@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{Base::Layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Category</title>
+</head>
+<body>
+	<section>
+		<div class="container-fluid p-5 mt-5">
+			<div class="row">
+				<div class="col-md-3 offset-md-5">
+					<div class="card card-sh">
+						<div class="card-header text-center">
+							<p class="fs-4">Edit Category</p>
+
+							<th:block th:if="${session.succMsg}">
+								<p class="text-success fw-bold">[[${session.succMsg}]]</p>
+								<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+
+							<th:block th:if="${session.errorMsg}">
+								<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+								<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+						</div>
+						
+						<!-- <div class="card-body">
+							<form th:action="@{'/admin/updateCategory/' + ${category.id}}" method="post" enctype="multipart/form-data">
+								<input type="hidden" name="id" th:value="${category.id}">
+ -->
+                                <div class="card-body">
+                            <!-- Notice we removed the concatenated category id from the action URL -->
+                            <form th:action="@{/admin/updateCategory}" method="post" enctype="multipart/form-data">
+                                <!-- Passing the category id as a hidden input -->
+                                <input type="hidden" name="id" th:value="${category.id}">
+								<div class="mb-3">
+									<label>Enter Category</label> 
+									<input type="text" name="name" th:value="${category.name}" class="form-control" required>
+								</div>
+
+								<div class="mb-3">
+									<label>Status</label>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" th:checked="${category.isActive}" value="true" name="isActive" id="active"> 
+										<label class="form-check-label" for="active"> Active </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" th:checked="!${category.isActive}" value="false" name="isActive" id="inactive"> 
+										<label class="form-check-label" for="inactive"> Inactive </label>
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label>Upload Image</label> 
+									<input type="file" name="file" class="form-control">
+								</div>
+
+								<img th:src="@{'/Images/CategoryImg/' + ${category.imageName}}" width="100px" height="100px">
+								
+								<button class="btn btn-primary col-md-12 mt-2">Update</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
